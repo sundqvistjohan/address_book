@@ -6,23 +6,19 @@ After(async function() {
 
 Given('I visit the site', async function() {
   return await this.openHomePage()
-  return 'pending'
 })
 
 
 Then('I should see {string}', async function(content) {
   return await this.pageHasTextContent(content)
-  return 'pending'
  })
 
 When('I click {string}', async function(string) {
-  // Write code here that turns the phrase above into concrete actions
-  return 'pending'
+  return await this.clickOnAddContactBtn()
 })
 
-Then('I fill in {string} with {string}', async function(string, string2) {
-  // Write code here that turns the phrase above into concrete actions
-  return 'pending'
+Then('I fill in {string} with {string}', async function(field, content) {
+  return await this.fillFormField(field.toLowerCase(), content)
 })
 
 Then('I should have {int} contact in my address book', async function(int) {
