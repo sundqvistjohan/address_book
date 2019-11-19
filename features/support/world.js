@@ -50,7 +50,7 @@ class AddressBookWorld {
     }
     async checkContactStorageCount(expectedCount) {
         const actualCount = await this.page.evaluate(
-            () => JSON.parse(window.localStorage.getItem('contacts')).length
+            () => [JSON.parse(window.localStorage.getItem('contacts'))].length
         )
         expect(actualCount).to.be.eq(expectedCount)
     }
