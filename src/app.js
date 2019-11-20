@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const ul = document.createElement('ul')
       
           contacts.forEach(contact => {
+            let pos = contacts.indexOf(contact)
             let li = document.createElement('li')
             li.innerHTML = `
               <div class="card">
@@ -18,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   <img src="https://ca-address-book.herokuapp.com/images/pine.jpg" width="64", height="64" />
                 </div>
                 <div class="remove">
-                <button class="remove-user">Remove ${ contact.name }</button>
+                    <button class="remove-${pos}">Remove ${ contact.name }</button>
                 </div>
                 <div class="content">
                   <h1>${ contact.name }</h1>
