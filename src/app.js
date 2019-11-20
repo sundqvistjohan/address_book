@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
             li.innerHTML = `
               <div class="card">
                 <div class="image">
-                  <img src="https://ca-address-book.herokuapp.com/images/pine.jpg" />
+                  <img src="https://ca-address-book.herokuapp.com/images/pine.jpg" width="64", height="64" />
                 </div>
                 <div class="content">
                   <h1>${ contact.name }</h1>
@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     renderContacts()
+
     const addContactForm = document.querySelector('.new-contact-form')
 
     addContactForm.addEventListener('submit', event => {
@@ -64,7 +65,15 @@ document.addEventListener('DOMContentLoaded', () => {
         let contacts = JSON.parse(storage.getItem('contacts')) || []
         contacts.push(contact)
         storage.setItem('contacts', JSON.stringify(contacts))
+        document.getElementById('contact-form').reset()
         renderContacts()
     })
+
+    //document.querySelector('.add-contact').addEventListener('click', event => {
+        //event.preventDefault()
+        
+        
+   // })
+
 
 })
