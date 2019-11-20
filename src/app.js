@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         storage.setItem('contacts', JSON.stringify(contacts))
         document.getElementById('contact-form').reset()
         renderContacts()
+        location.reload()
     })
 
     document.querySelector('ul').addEventListener('click', event => {
