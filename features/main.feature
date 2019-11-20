@@ -69,6 +69,6 @@ Feature: Create contacts
     And I should see "John Doe"
     And I should see "Jane Doe"
     When I click "Remove Jane Doe"
-    Then I should see "Alert box"
+    Then I should get "Alert box"
     Then I will click "Confirm"
     Then I should have 1 contact in my address book

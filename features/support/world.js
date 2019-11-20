@@ -44,7 +44,7 @@ class AddressBookWorld {
                 return '.save-contact'
                 break
             case 'remove jane doe':
-                return '.remove-1'
+                return '.remove-contact'
                 break
             default:
                 throw `${btnName} button is not defined`
@@ -60,8 +60,11 @@ class AddressBookWorld {
     async pageDoesNotHaveTextContent(unexpectedContent) {
         const pageContent = await this.page.content()
         let actualContent = pageContent.match(unexpectedContent)
-
         expect(actualContent).to.be.eq(null)
+    }
+    async getAlertBox() {
+        this.page.evaluate_script('window.confirm = function() { return true; }')
+        this.page.click("OK")
     }
 }
 

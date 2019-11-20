@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   <img src="https://ca-address-book.herokuapp.com/images/pine.jpg" width="64", height="64" />
                 </div>
                 <div class="remove">
-                    <button class="remove-${pos}">Remove ${ contact.name }</button>
+                    <button id="remove-btn-${pos}" class="remove-contact">Remove ${ contact.name }</button>
                 </div>
                 <div class="content">
                   <h1>${ contact.name }</h1>
@@ -73,11 +73,12 @@ document.addEventListener('DOMContentLoaded', () => {
         renderContacts()
     })
 
-    //document.querySelector('.add-contact').addEventListener('click', event => {
-        //event.preventDefault()
-        
-        
-   // })
+    document.querySelector('ul').addEventListener('click', event => {
+        const clickedButton = event.target.id
+        const contactNumber = clickedButton.replace('remove-btn-', '')
+        const contacts = JSON.parse(window.localStorage.getItem('contacts'))
+        confirm(`Are you sure you want to remove ${contacts[contactNumber].name}?`);
+    })
 
 
 })
