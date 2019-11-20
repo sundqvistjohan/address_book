@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const storage = window.localStorage
         const contacts = JSON.parse(storage.getItem('contacts'))
         
-
         let div = document.querySelector('.contact-list')
       
         if (contacts) {
@@ -62,7 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         console.log(`Saving the following contact: ${JSON.stringify(contact)}`)
-        storage.setItem('contacts', JSON.stringify([contact]))
+        let contacts = JSON.parse(storage.getItem('contacts')) || []
+        contacts.push(contact)
+        storage.setItem('contacts', JSON.stringify(contacts))
         renderContacts()
     })
 
