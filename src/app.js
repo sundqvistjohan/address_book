@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
             cardDiv.setAttribute("class", "card")
             cardDiv.innerHTML = `
                 <div class="image">
+                <button id="remove-btn-${pos}" class="circular ui right floated red icon button" style="margin:8px;padding:6px">
+                    <i id="remove-btn-${pos}" class="trash alternate outline icon"></i>
+                </button>
                   <img src="https://avatars.dicebear.com/v2/male/${ contact.name }.svg" />
                 </div>
                 <div class="content">
@@ -23,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
                   ${ contact.email } | 
                   <a href="https://www.twitter.com/${ contact.twitter}">@${contact.twitter}</a>                
                 </div>
-                <button id="remove-btn-${pos}" class="red ui bottom attached button">Remove ${ contact.name }</button>
             `
             div.appendChild(cardDiv)
           })      
