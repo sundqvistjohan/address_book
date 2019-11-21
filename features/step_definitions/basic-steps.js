@@ -28,7 +28,3 @@ Then('I should have {int} contact in my address book', async function(int) {
 Then('I should not see {string}', async function(content) {
   return await this.pageDoesNotHaveTextContent(content)
 })
-
-Then('I should get {string}', async function(content) {
-    return await this.getAlertBox(content)
-   })

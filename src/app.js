@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         let div = document.querySelector('.contact-list')
       
-        if (contacts) {
+        if (contacts && contacts.length > 0) {
           div.innerHTML = ''
       
           const ul = document.createElement('ul')
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else { 
           div.innerHTML = '<p>You have no contacts in your address book</p>' 
         }
-      }
+    }
     renderContacts()
 
     const addContactForm = document.querySelector('.new-contact-form')
@@ -75,17 +75,15 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     document.querySelector('ul').addEventListener('click', event => {
+        const storage = window.localStorage
         const clickedButton = event.target.id
         const contactNumber = clickedButton.replace('remove-btn-', '')
-        const contacts = JSON.parse(window.localStorage.getItem('contacts'))
-        removeContact = confirm(`Are you sure you want to remove ${contacts[contactNumber].name}?`)
+        const contacts = JSON.parse(storage.getItem('contacts'))
+        const removeContact = confirm(`Are you sure you want to remove ${contacts[contactNumber].name}?`)
         if (removeContact == true) {
-          contacts.splice(contacts[contactNumber], 1)
-            const storage = window.localStorage
-            storage.setItem('contacts', JSON.stringify(contacts)) 
-            location.reload()
+            contacts.splice(contacts[contactNumber], 1)
+            storage.setItem('contacts', JSON.stringify(contacts))
+            window.location.reload()
         }
     })
-
-
 })
