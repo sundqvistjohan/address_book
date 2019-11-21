@@ -7,9 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
         if (contacts && contacts.length > 0) {
           div.innerHTML = ''
-      
-          //const ul = document.createElement('ul')
-      
+            
           contacts.forEach(contact => {
             let pos = contacts.indexOf(contact)
             let cardDiv = document.createElement('div')
@@ -28,9 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <button id="remove-btn-${pos}" class="red ui bottom attached button">Remove ${ contact.name }</button>
             `
             div.appendChild(cardDiv)
-          })
-      
-          //div.appendChild(ul) 
+          })      
         } else { 
           div.innerHTML = '<p>You have no contacts in your address book</p>' 
         }
