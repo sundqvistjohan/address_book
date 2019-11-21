@@ -41,7 +41,7 @@ class AddressBookWorld {
                 return '.add-contact'
                 break
             case 'save contact':
-                return '.save-contact'
+                return '#save-contact'
                 break
             case 'remove jane doe':
                 return '#remove-btn-1'
