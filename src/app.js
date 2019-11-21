@@ -78,7 +78,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const clickedButton = event.target.id
         const contactNumber = clickedButton.replace('remove-btn-', '')
         const contacts = JSON.parse(window.localStorage.getItem('contacts'))
-        confirm(`Are you sure you want to remove ${contacts[contactNumber].name}?`);
+        removeContact = confirm(`Are you sure you want to remove ${contacts[contactNumber].name}?`)
+        if (removeContact == true) {
+          contacts.splice(contacts[contactNumber], 1)
+            const storage = window.localStorage
+            storage.setItem('contacts', JSON.stringify(contacts)) 
+            location.reload()
+        }
     })
 
 
