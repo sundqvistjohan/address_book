@@ -17,7 +17,7 @@
                 <h1>Contacts</h1>
             </div>
             <form action="#" class="new-contact-form">
-                <div class="ui form">
+                <div class="ui form" style="max-width:900px">
                     <div class="two fields">
                         <div class="field">
                             <label for="name">Name</label>
@@ -28,7 +28,7 @@
                             <input id="contact-email" name="email" type="email">
                         </div>
                     </div>
-                    <div class="two fields">
+                    <div class="three fields">
                         <div class="field">
                             <label for="phone">Phone</label>
                             <input id="contact-phone" name="phone" type="text">
@@ -37,12 +37,14 @@
                             <label for="company">Company</label>
                             <input id="contact-company" name="company" type="text">
                         </div>
+                        <div class="field">
+                            <label for="twitter">Twitter</label>
+                            <input id="contact-twitter" name="twitter" type="text">
+                        </div>
                     </div>
                     <div class="field">
                         <label for="notes">Notes</label>
-                        <textarea id="contact-notes" name="notes" type="text"></textarea>
-                        <label for="twitter">Twitter</label>
-                        <input id="contact-twitter" name="twitter" type="text">
+                        <textarea id="contact-notes" name="notes" type="text" rows="2"></textarea>
                     </div>
                     <input class="positive ui button" id="save-contact" type="submit" value="Save contact">
                 </div>

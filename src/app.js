@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
             email,
             phone,
             company,
-            notes,
             twitter,
+            notes,
         } = addContactForm.elements
 
         const contact = {
