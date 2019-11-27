@@ -41,7 +41,10 @@ class AddressBookWorld {
                 return '.add-contact'
                 break
             case 'save contact':
-                return '.save-contact'
+                return '#save-contact'
+                break
+            case 'remove jane doe':
+                return '#remove-btn-1'
                 break
             default:
                 throw `${btnName} button is not defined`
@@ -57,7 +60,6 @@ class AddressBookWorld {
     async pageDoesNotHaveTextContent(unexpectedContent) {
         const pageContent = await this.page.content()
         let actualContent = pageContent.match(unexpectedContent)
-
         expect(actualContent).to.be.eq(null)
     }
 }

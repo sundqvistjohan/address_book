@@ -5,30 +5,55 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
   <title>Address book</title>
+  <script src="./dist/bundle.js"></script>
 </head>
 
 <body>
-  <script src="./dist/bundle.js"></script>
-  <h1>Contacts</h1>
-  <form action="#" class="new-contact-form" id="contact-form">
-    <label for="name">Name</label>
-    <input id="contact-name" name="name" type="text">
-    <label for="email">Email</label>
-    <input id="contact-email" name="email" type="email">
-    <label for="phone">Phone</label>
-    <input id="contact-phone" name="phone" type="text">
-    <label for="company">Company</label>
-    <input id="contact-company" name="company" type="text">
-    <label for="notes">Notes</label>
-    <textarea id="contact-notes" name="notes" type="text"></textarea>
-    <label for="twitter">Twitter</label>
-    <input id="contact-twitter" name="twitter" type="text">
-    <input class="save-contact" type="submit" value="Save contact">
-  </form>
-  <button class="add-contact">Add Contact</button>
-  <div class="contact-list">
-  </div>
+    <div class="ui container">
+        <div class="ui container">
+            <div class="ui aligned header">
+                <h1>Contacts</h1>
+            </div>
+            <form action="#" class="new-contact-form">
+                <div class="ui form" style="max-width:900px">
+                    <div class="two fields">
+                        <div class="field">
+                            <label for="name">Name</label>
+                            <input id="contact-name" name="name" type="text">
+                        </div>
+                        <div class="field">
+                            <label for="email">Email</label>
+                            <input id="contact-email" name="email" type="email">
+                        </div>
+                    </div>
+                    <div class="three fields">
+                        <div class="field">
+                            <label for="phone">Phone</label>
+                            <input id="contact-phone" name="phone" type="text">
+                        </div>
+                        <div class="field">
+                            <label for="company">Company</label>
+                            <input id="contact-company" name="company" type="text">
+                        </div>
+                        <div class="field">
+                            <label for="twitter">Twitter</label>
+                            <input id="contact-twitter" name="twitter" type="text">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="notes">Notes</label>
+                        <textarea id="contact-notes" name="notes" type="text" rows="2"></textarea>
+                    </div>
+                    <input class="positive ui button" id="save-contact" type="submit" value="Save contact">
+                </div>
+            </form>
+            <br>
+            <div class="ui cards" id="contact-list">
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

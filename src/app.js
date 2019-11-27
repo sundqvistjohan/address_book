@@ -3,37 +3,36 @@ document.addEventListener('DOMContentLoaded', () => {
         const storage = window.localStorage
         const contacts = JSON.parse(storage.getItem('contacts'))
         
-        let div = document.querySelector('.contact-list')
+        let div = document.querySelector('#contact-list')
       
-        if (contacts) {
+        if (contacts && contacts.length > 0) {
           div.innerHTML = ''
-      
-          const ul = document.createElement('ul')
-      
+            
           contacts.forEach(contact => {
-            let li = document.createElement('li')
-            li.innerHTML = `
-              <div class="card">
+            let pos = contacts.indexOf(contact)
+            let cardDiv = document.createElement('div')
+            cardDiv.setAttribute("class", "card")
+            cardDiv.innerHTML = `
                 <div class="image">
-                  <img src="https://ca-address-book.herokuapp.com/images/pine.jpg" width="64", height="64" />
+                <button id="remove-btn-${pos}" class="circular ui right floated red icon button" style="margin:8px;padding:6px">
+                    <i id="remove-btn-${pos}" class="trash alternate outline icon"></i>
+                </button>
+                  <img src="https://avatars.dicebear.com/v2/male/${ contact.name }.svg" />
                 </div>
                 <div class="content">
-                  <h1>${ contact.name }</h1>
-                  <h2>${ contact.company }</h2>
+                  <div class="header">${ contact.name }</div>
+                  <div class="meta">${ contact.company }</div>
                   <p>${ contact.notes }</p> 
                   ${ contact.email } | 
-                  <a href="https://www.twitter.com/${ contact.twitter}">@${contact.twitter}</a>
+                  <a href="https://www.twitter.com/${ contact.twitter}">@${contact.twitter}</a>                
                 </div>
-              </div>
-           `
-            ul.appendChild(li)
-          })
-      
-          div.appendChild(ul) 
+            `
+            div.appendChild(cardDiv)
+          })      
         } else { 
           div.innerHTML = '<p>You have no contacts in your address book</p>' 
         }
-      }
+    }
     renderContacts()
 
     const addContactForm = document.querySelector('.new-contact-form')
@@ -47,8 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
             email,
             phone,
             company,
-            notes,
             twitter,
+            notes,
         } = addContactForm.elements
 
         const contact = {
@@ -65,15 +64,21 @@ document.addEventListener('DOMContentLoaded', () => {
         let contacts = JSON.parse(storage.getItem('contacts')) || []
         contacts.push(contact)
         storage.setItem('contacts', JSON.stringify(contacts))
-        document.getElementById('contact-form').reset()
+        document.querySelector('.new-contact-form').reset()
         renderContacts()
+        location.reload()
     })
 
-    //document.querySelector('.add-contact').addEventListener('click', event => {
-        //event.preventDefault()
-        
-        
-   // })
-
-
+    document.querySelector('#contact-list').addEventListener('click', event => {
+        const storage = window.localStorage
+        const clickedButton = event.target.id
+        const contactNumber = clickedButton.replace('remove-btn-', '')
+        const contacts = JSON.parse(storage.getItem('contacts'))
+        const removeContact = confirm(`Are you sure you want to remove ${contacts[contactNumber].name}?`)
+        if (removeContact == true) {
+            contacts.splice(contactNumber, 1)
+            storage.setItem('contacts', JSON.stringify(contacts))
+            window.location.reload()
+        }
+    })
 })
