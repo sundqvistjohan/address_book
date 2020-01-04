@@ -1,6 +1,7 @@
 # Address book
 
 An address book application written in JavaScript and styled using Semantic UI. Tested with cucumber.
+Deployed at https://addressbook-jsundq.netlify.com/
 
 ## Getting Started
 
